@@ -8,7 +8,9 @@
 ## Requirements
 * python3.7
 
-* opencv
+* opencv-python, numpy, mediapipe
+
+* screeninfo
 
 ## Usage
 

@@ -1,6 +1,14 @@
 from cv2 import cv2
 import mediapipe as mp
 import numpy as np
+from screeninfo import get_monitors
+
+# get main moonitor resolution
+MonitorH, MonitorW = 0, 0
+for m in get_monitors():
+    MonitorH, MonitorW = m.height, m.width
+    # print(MonitorH, MonitorW)
+
 
 handsDetector = mp.solutions.hands.Hands()
 cap = cv2.VideoCapture(0)
@@ -17,9 +25,14 @@ while(cap.isOpened()):
         y_tip = int(results.multi_hand_landmarks[0].landmark[8].y *
                 flippedRGB.shape[0])
 
-        #TODO: results.multi_hand_landmarks[0].landmark[8].[x / y] преобразовать в координаты экрана
+        cursorX = results.multi_hand_landmarks[0].landmark[8].x * MonitorH
+        cursorY = results.multi_hand_landmarks[0].landmark[8].x * MonitorW
+        # print(cursorX, cursorY)
+
         cv2.circle(flippedRGB,(x_tip, y_tip), 10, (255, 0, 0), -1)
-        # print(results.multi_hand_landmarks[0])
+        
+
+
     res_image = cv2.cvtColor(flippedRGB, cv2.COLOR_RGB2BGR)
     cv2.imshow("Hands", res_image)
 
