@@ -3,15 +3,14 @@
 
 ## Introduction
 
+##### Control your mouse via hand gestures
+
 ## Requirements
 * python3.7
 
 * opencv
 
-
-
 ## Usage
-##### Control your mouse via hand gestures
 
 #### Firstly, install all required libs
 
